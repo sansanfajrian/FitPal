@@ -1,12 +1,17 @@
 package com.sansan.fitpal
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.os.StrictMode
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
+import com.google.gson.Gson
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +20,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
+        if (Build.VERSION.SDK_INT > 9) {
+            val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+            StrictMode.setThreadPolicy(policy)
+        }
         setContentView(R.layout.activity_main)
 
         var imageView: ImageView = findViewById(R.id.imageView)
@@ -27,9 +36,21 @@ class MainActivity : AppCompatActivity() {
         fun rand(from: Int, to: Int): Int {
             return random.nextInt(to - from) + from
         }
-        var randomQuote = rand(0, 19)
-        var quotes2 = quotes.quote[randomQuote]
-        var author2 = quotes.author[randomQuote]
+
+        val client = OkHttpClient()
+
+        val request = Request.Builder()
+            .url("https://quotes-by-api-ninjas.p.rapidapi.com/v1/quotes?category=fitness&limit=10")
+            .get()
+            .addHeader("X-RapidAPI-Key", "ba2c4e86cemsh728f246944e81b3p1707aajsn4885f9a6ce93")
+            .addHeader("X-RapidAPI-Host", "quotes-by-api-ninjas.p.rapidapi.com")
+            .build()
+
+        val response = client.newCall(request).execute().body?.string()
+        val quotes: Array<Quotes> = Gson().fromJson(response, Array<Quotes>::class.java)
+        var randomQuote = rand(0, 10)
+        var quotes2 = quotes[randomQuote].quote
+        var author2 = quotes[randomQuote].author
 
 
         startButton.setOnClickListener{

@@ -149,7 +149,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun onBackPressedDialog(){
         var customDialog = Dialog(this)
         customDialog.setContentView(R.layout.backdialog)
-            customDialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        customDialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         customDialog.setCanceledOnTouchOutside(false)
         var buttonYes: Button = customDialog.findViewById(R.id.buttonYes)
         var buttonNo: Button = customDialog.findViewById(R.id.buttonNo)
