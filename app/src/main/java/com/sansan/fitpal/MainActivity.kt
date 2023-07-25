@@ -54,8 +54,8 @@ class MainActivity : AppCompatActivity() {
 
 
         startButton.setOnClickListener{
-            val exchoice = Intent(this, ExchoiceActivity::class.java)
-            startActivity(exchoice)
+            val exercise = Intent(this, ExerciseActivity::class.java)
+            startActivity(exercise)
         }
 
 
