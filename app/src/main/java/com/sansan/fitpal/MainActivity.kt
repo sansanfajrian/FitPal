@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         val client = OkHttpClient()
 
         val request = Request.Builder()
-            .url("https://quotes-by-api-ninjas.p.rapidapi.com/v1/quotes?category=fitness&limit=10")
+            .url("https://quotes-by-api-ninjas.p.rapidapi.com/v1/quotes?category=success&limit=10")
             .get()
             .addHeader("X-RapidAPI-Key", "ba2c4e86cemsh728f246944e81b3p1707aajsn4885f9a6ce93")
             .addHeader("X-RapidAPI-Host", "quotes-by-api-ninjas.p.rapidapi.com")
