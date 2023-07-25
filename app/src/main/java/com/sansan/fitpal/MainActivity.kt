@@ -54,8 +54,8 @@ class MainActivity : AppCompatActivity() {
 
 
         startButton.setOnClickListener{
-            val countDownScreen = Intent(this, ExerciseActivity::class.java)
-            startActivity(countDownScreen)
+            val exchoice = Intent(this, ExchoiceActivity::class.java)
+            startActivity(exchoice)
         }
 
 
