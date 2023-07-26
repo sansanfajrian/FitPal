@@ -76,7 +76,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout"
         app:shapeAppearanceOverlay="@style/rounded_corner"
-        tools:srcCompat="@drawable/placeholder"/>
+        tools:srcCompat="@drawable/jumpingjacks"/>
 
     <Switch
         android:id="@+id/switchSpeak"
